@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import ConfirmationModal from '@/components/ConfirmationModal'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+
+export const dynamic = 'force-dynamic'
 import {
   Store, Plus, ExternalLink, Edit3, Globe, ShoppingBag,
   CheckCircle, Clock, EyeOff, ArrowLeft, Eye, Trash2, Zap,

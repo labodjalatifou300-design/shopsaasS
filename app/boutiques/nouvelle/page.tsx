@@ -19,6 +19,8 @@ function slugify(text: string) {
 
 interface ProductRow { id: string; title?: string; images?: string[] }
 
+export const dynamic = 'force-dynamic'
+
 export default function NouvelleBoutiquePage() {
   const router = useRouter()
   const supabase = createClient()
