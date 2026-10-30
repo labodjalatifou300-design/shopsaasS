@@ -55,7 +55,7 @@ async function dispatchMetaPurchase(req: NextRequest, admin: ReturnType<typeof c
       fbp: typeof body.fbp === 'string' ? body.fbp : null,
       fbc: typeof body.fbc === 'string' ? body.fbc : null,
     })
-    if (!result.sent && result.reason !== 'no_consent' && result.reason !== 'not_configured') {
+    if (!result.sent && result.reason !== 'not_configured') {
       console.warn('[orders/create] Meta Purchase was not sent:', result.reason)
     }
   } catch (error) {

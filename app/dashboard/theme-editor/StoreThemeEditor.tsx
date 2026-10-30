@@ -3,7 +3,9 @@
 import Link from 'next/link'
 import { useState, useTransition } from 'react'
 import { Eye, GripVertical, Monitor, MoveDown, MoveUp, Palette, Plus, Save, Smartphone, Trash2 } from 'lucide-react'
-import { saveProductPage, type PageSection } from '../products/actions'
+
+// saveProductPage removed — use the store builder editor instead
+type PageSection = { id: string; type: string; label: string }
 
 type Product = { id: string; title: string; images: string[]; description: string }
 type Theme = { id: string; name: string; accent: string; background: string; surface: string; text: string; radius: number }
