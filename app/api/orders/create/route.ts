@@ -180,7 +180,7 @@ export async function POST(req: NextRequest) {
         const orderNumber = createdOrder?.order_number || orderId
         await Promise.all([
           dispatchOrderPush(String(store_id), orderId),
-          dispatchMetaPurchase(req, supabase, body, String(store_id), orderId, orderNumber),
+          dispatchMetaPurchase(req, supabase as any, body, String(store_id), orderId, orderNumber),
           markAbandonedCartConverted(supabase, {
             storeId: String(store_id),
             productId: typeof body.product_id === 'string' ? body.product_id : null,
