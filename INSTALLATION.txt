@@ -1,0 +1,8 @@
+SHOPSAAS : CORRECTIFS ET GUIDE
+
+1. Ouvre PUSH-SETUP.md. Il explique les fichiers, le dossier où les copier et les réglages dans Supabase avec des mots simples.
+2. Pour trouver le dossier du projet, cherche le dossier où se trouvent package.json, app et supabase.
+3. Copie le contenu de ce ZIP dans ce dossier et accepte le remplacement des fichiers.
+4. Fais ensuite les étapes du guide une par une. Ne partage pas PUSH-VALUES.txt ni SUPABASE_SERVICE_ROLE_KEY.
+
+Le Push sur téléphone n’est pas activé automatiquement : il faut terminer le guide et autoriser les notifications sur chaque appareil.

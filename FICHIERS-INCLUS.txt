@@ -1,0 +1,46 @@
+FICHIERS À REMPLACER OU AJOUTER
+
+Ce ZIP est un correctif ciblé, pas une copie complète de ShopSaaS. Copie les fichiers en conservant les chemins.
+
+Ajouter :
+- CREER-CLES-PUSH.cmd
+- scripts/generate-push-values.cjs
+- app/InstallAppButton.tsx
+- app/PWARegister.tsx
+- app/manifest.ts
+- app/api/push/subscribe/route.ts
+- components/dashboard/OrderNotification.tsx
+- lib/push/dispatch-order-push.ts
+- public/icons/app-192.png
+- public/icons/app-512.png
+- public/icons/app-apple.png
+- public/icons/app-maskable-512.png
+- public/sw.js
+- supabase/functions/push-order/index.ts
+- supabase/migrations/0014_web_push_subscriptions.sql
+
+Remplacer :
+- .gitignore
+- INSTALLATION.txt
+- PUSH-SETUP.md
+- app/api/orders/create/route.ts
+- app/api/orders/poll/route.ts
+- app/boutiques/[id]/EditorClient.tsx
+- app/boutiques/[id]/page.tsx
+- app/boutiques/page/[pageId]/page.tsx
+- app/dashboard/Sidebar.tsx
+- app/dashboard/layout.tsx
+- app/dashboard/orders/OrdersTable.tsx
+- app/dashboard/products/ProductsTable.tsx
+- app/globals.css
+- app/layout.tsx
+- components/store-builder/Canvas.tsx
+- components/store-builder/Editor.tsx
+- components/store-builder/SidebarLeft.tsx
+- components/store-builder/TemplateLayoutRenderer.tsx
+- components/store-builder/Toolbar.tsx
+- components/store-builder/sections/BeforeAfterRender.tsx
+- components/store-builder/sections/OrderFormRender.tsx
+- lib/store-builder/boutique-themes.ts
+- .env.example
+- supabase/config.toml

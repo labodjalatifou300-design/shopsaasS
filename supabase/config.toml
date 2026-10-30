@@ -1,0 +1,4 @@
+project_id = "shopsaas"
+
+[functions.push-order]
+verify_jwt = false
