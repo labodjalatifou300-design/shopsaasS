@@ -2,13 +2,6 @@
 
 import Script from 'next/script'
 
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void
-    _fbq?: (...args: unknown[]) => void
-  }
-}
-
 /** Meta (Facebook) Pixel — PageView + événements e-commerce sur la boutique publique */
 export default function StoreTracking({ pixelId }: { pixelId?: string | null }) {
   const id = pixelId?.trim()

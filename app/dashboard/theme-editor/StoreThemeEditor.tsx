@@ -1,11 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useTransition } from 'react'
+import { useState } from 'react'
 import { Eye, GripVertical, Monitor, MoveDown, MoveUp, Palette, Plus, Save, Smartphone, Trash2 } from 'lucide-react'
 
 // saveProductPage removed — use the store builder editor instead
-type PageSection = { id: string; type: string; label: string }
+type PageSection = { id: string; type: string; label?: string; visible?: boolean; settings?: Record<string, any> }
 
 type Product = { id: string; title: string; images: string[]; description: string }
 type Theme = { id: string; name: string; accent: string; background: string; surface: string; text: string; radius: number }
@@ -24,18 +24,14 @@ export function StoreThemeEditor({ products, selected, initialSections }: { prod
   const [theme, setTheme] = useState(themes[0])
   const [sections, setSections] = useState<PageSection[]>(initialSections.length ? initialSections : starter.map((type, i) => ({ id: `${type}-${i}`, type, visible: true, settings: {} })))
   const [selectedId, setSelectedId] = useState(sections[0]?.id)
-  const [pending, startTransition] = useTransition()
   const [notice, setNotice] = useState('')
   const product = products.find((p) => p.id === productId) ?? selected
   const active = sections.find((s) => s.id === selectedId)
 
   function save() {
     if (!productId) return
-    startTransition(async () => {
-      const result = await saveProductPage(productId, sections.map((section, index) => index === 0 ? { ...section, settings: { ...section.settings, _theme: theme.id } } : section))
-      setNotice(result.error ?? `Thème « ${theme.name} » enregistré.`)
-      setTimeout(() => setNotice(''), 2500)
-    })
+    setNotice('Utilise le nouvel éditeur de pages (/boutiques) pour sauvegarder.')
+    setTimeout(() => setNotice(''), 3000)
   }
   function updateActive(settings: Record<string, string>) {
     if (!active) return
@@ -49,7 +45,7 @@ export function StoreThemeEditor({ products, selected, initialSections }: { prod
     <div className="fixed inset-0 flex min-h-screen flex-col bg-zinc-100 md:pl-64">
       <header className="flex h-16 shrink-0 items-center justify-between border-b border-zinc-200 bg-white px-4 md:px-6">
         <div className="flex items-center gap-3"><Link href="/dashboard" className="rounded-lg px-2 py-1 text-sm text-zinc-500 hover:bg-zinc-100">← Dashboard</Link><Eye className="size-5" style={{ color: theme.accent }} /><div><h1 className="font-semibold">Éditeur de boutique</h1><p className="hidden text-xs text-zinc-500 sm:block">Choisis un thème, organise tes sections et vois le rendu public.</p></div></div>
-        <div className="flex items-center gap-2"><span className="hidden text-sm text-emerald-600 sm:block">{notice}</span><button onClick={save} disabled={pending || !productId} className="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold text-white disabled:opacity-50" style={{ background: theme.accent }}><Save className="size-4" />{pending ? 'Enregistrement…' : 'Enregistrer'}</button></div>
+        <div className="flex items-center gap-2"><span className="hidden text-sm text-emerald-600 sm:block">{notice}</span><button onClick={save} disabled={!productId} className="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold text-white disabled:opacity-50" style={{ background: theme.accent }}><Save className="size-4" />Enregistrer</button></div>
       </header>
       <div className="flex min-h-0 flex-1">
         <aside className="w-[320px] shrink-0 overflow-y-auto border-r border-zinc-200 bg-white p-4">
